@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="msa.external.v1.nicepay.dao.OrderDao">
+    <insert id="createOrder" parameterType="msa.external.v1.nicepay.dto.CallbackOutDto">
+        INSERT INTO order_bsc (
+            CUID,
+            TID,
+            MOID,
+            GOODS,
+            PRICE,
+            PAY_METHOD,
+            BANK_CODE,
+            VBANK_NAME,
+            VBANK_NUM,
+            VBANK_EXP,
+            NEW_DATE
+        ) VALUES (
+            '1',
+            #{tid},
+            #{moid},
+            #{goodsName},
+            REGEXP_REPLACE(#{amt}, '^0+', ''),
+            #{payMethod},
+            #{vBankBankCode},
+            #{vBankBankName},
+            #{vBankNum},
+            CONCAT(#{vBankExpDate}, #{vBankExpTime}),
+            NOW()
+        )
+    </insert>
+
+    <select id="getOrderList" parameterType="Integer" resultType="msa.external.v1.nicepay.model.Order">
+        SELECT * FROM order_bsc
+        WHERE
+            CUID = #{cuid}
+    </select>
+</mapper>

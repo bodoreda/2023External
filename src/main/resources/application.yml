@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: external-service
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/external
+    username: root
+    password: 1234
+
+mybatis:
+  mapper-locations: repository/*.xml
+  type-aliases-package: msa.external.v1.nicepay.dao
+
+logging:
+  level:
+    root: INFO
+    msa.external.v1.nicepay: TRACE
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+nicepay:
+  merchantKey: EYzu8jGGMfqaDEp76gSckuvnaHHu+bC4opsSN6lHv3b2lurNYkVXrZ7Z1AoqQnXI3eLuaUFyoRNC6FkrzVjceg==
+  merchantID: nicepay00m
