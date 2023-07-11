@@ -237,7 +237,7 @@ public class NicepayService {
          ****************************************************************************************
          */
         String tid                  = inDto.getTid();
-        String cancelAmt            = "1004";
+        String cancelAmt            = inDto.getCancelAmt();
         String partialCancelCode    = "0";
         String mid                  = merchantID;
         String moid                 = inDto.getMoid();
