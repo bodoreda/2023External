@@ -15,8 +15,8 @@ spring:
   jwt:
     secret: thekeysizemustbegreaterthanorequalto256bits
     token:
-      accessExpTime: 300000   # 5분
-      refreshExpTime: 3600000 # 60분
+      accessExpTime: 60000   # 1분
+      refreshExpTime: 300000 # 5분
 
 mybatis:
   mapper-locations: repository/*.xml
