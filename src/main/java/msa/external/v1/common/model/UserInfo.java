@@ -1,8 +1,8 @@
-package msa.external.v1.dto;
+package msa.external.v1.common.model;
 
 import lombok.Data;
 
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * packageName : msa.external.v1.dto
@@ -16,12 +16,14 @@ import java.util.List;
  * 2023-07-05       UserInfo       최초 생성
  */
 @Data
-public class UserInfo {
-    private String loginId;
-    private String userName;
+public class UserInfo implements Serializable {
+    /* redis에 저장하기 위해서는 implements Serializable이 필요 */
+    private String cuid;
+    private String login_id;
+    private String user_name;
     private String phone;
     private String email;
     private String addr;
-    private String addrDtl;
-    private List<String> roles;
+    private String addr_dtl;
+    private String roles;
 }

@@ -10,13 +10,13 @@ spring:
     username: root
     password: 1234
   redis:
-    host: localhost
+    host: host.docker.internal
     port: 6379
   jwt:
     secret: thekeysizemustbegreaterthanorequalto256bits
     token:
-      accessExpTime: 60000   # 1분
-      refreshExpTime: 300000 # 5분
+      accessExpTime: 300000   # 5분
+      refreshExpTime: 1200000 # 20분
 
 mybatis:
   mapper-locations: repository/*.xml
